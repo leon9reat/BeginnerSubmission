@@ -1,8 +1,11 @@
 package com.medialink.beginsubmission1.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Metric{
+public class Metric implements Parcelable {
 
 	@SerializedName("amount")
 	private double amount;
@@ -46,4 +49,37 @@ public class Metric{
 			",unitLong = '" + unitLong + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeDouble(this.amount);
+		dest.writeString(this.unitShort);
+		dest.writeString(this.unitLong);
+	}
+
+	public Metric() {
+	}
+
+	protected Metric(Parcel in) {
+		this.amount = in.readDouble();
+		this.unitShort = in.readString();
+		this.unitLong = in.readString();
+	}
+
+	public static final Parcelable.Creator<Metric> CREATOR = new Parcelable.Creator<Metric>() {
+		@Override
+		public Metric createFromParcel(Parcel source) {
+			return new Metric(source);
+		}
+
+		@Override
+		public Metric[] newArray(int size) {
+			return new Metric[size];
+		}
+	};
 }

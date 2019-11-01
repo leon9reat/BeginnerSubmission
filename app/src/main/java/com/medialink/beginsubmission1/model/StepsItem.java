@@ -1,10 +1,14 @@
 package com.medialink.beginsubmission1.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class StepsItem{
+public class StepsItem implements Parcelable {
 
 	@SerializedName("number")
 	private int number;
@@ -72,4 +76,43 @@ public class StepsItem{
 			",step = '" + step + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeInt(this.number);
+		dest.writeParcelable(this.length, flags);
+		dest.writeList(this.ingredients);
+		dest.writeList(this.equipment);
+		dest.writeString(this.step);
+	}
+
+	public StepsItem() {
+	}
+
+	protected StepsItem(Parcel in) {
+		this.number = in.readInt();
+		this.length = in.readParcelable(Length.class.getClassLoader());
+		this.ingredients = new ArrayList<IngredientsItem>();
+		in.readList(this.ingredients, IngredientsItem.class.getClassLoader());
+		this.equipment = new ArrayList<Object>();
+		in.readList(this.equipment, Object.class.getClassLoader());
+		this.step = in.readString();
+	}
+
+	public static final Parcelable.Creator<StepsItem> CREATOR = new Parcelable.Creator<StepsItem>() {
+		@Override
+		public StepsItem createFromParcel(Parcel source) {
+			return new StepsItem(source);
+		}
+
+		@Override
+		public StepsItem[] newArray(int size) {
+			return new StepsItem[size];
+		}
+	};
 }

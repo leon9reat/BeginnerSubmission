@@ -1,8 +1,11 @@
 package com.medialink.beginsubmission1.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class Measures{
+public class Measures implements Parcelable {
 
 	@SerializedName("metric")
 	private Metric metric;
@@ -34,4 +37,35 @@ public class Measures{
 			",us = '" + us + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeParcelable(this.metric, flags);
+		dest.writeParcelable(this.us, flags);
+	}
+
+	public Measures() {
+	}
+
+	protected Measures(Parcel in) {
+		this.metric = in.readParcelable(Metric.class.getClassLoader());
+		this.us = in.readParcelable(Us.class.getClassLoader());
+	}
+
+	public static final Parcelable.Creator<Measures> CREATOR = new Parcelable.Creator<Measures>() {
+		@Override
+		public Measures createFromParcel(Parcel source) {
+			return new Measures(source);
+		}
+
+		@Override
+		public Measures[] newArray(int size) {
+			return new Measures[size];
+		}
+	};
 }

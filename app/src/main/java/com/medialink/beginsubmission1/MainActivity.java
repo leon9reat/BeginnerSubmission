@@ -1,5 +1,6 @@
 package com.medialink.beginsubmission1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -57,7 +58,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(RecipesItem item) {
-        Log.d(TAG, "onItemClick: " + item.getTitle());
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra("EXTRA_DATA", item);
+        startActivity(intent);
     }
 
     private void getData() {

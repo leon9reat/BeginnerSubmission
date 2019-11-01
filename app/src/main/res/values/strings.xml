@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BeginSubmission1</string>
     <string name="example_instruction">Bring a large pot of water to boil. Add spinach leaves and cook until just tender, about 1 minute. Let cool, then squeeze dry. Place in a food processor and process until finely chopped, but not overly pureed.Combine walnuts, onion, garlic, cilantro, fenugreek powder, coriander powder, cayenne, tarragon vinegar and water in a medium bowl. Add chopped spinach and mix well. Season to taste with a little salt.Cover and refrigerate for 6-8 hours to let flavors melt together.Use a spoon to scoop out little balls of spinach walnut dip. Form round balls, make an indentation in the center.Place a few pomegranate seeds in the indentation and sprinkle with fresh chopped cilantro or parsley</string>
+    <string name="example_title">Heart Disease Awareness Month – for Spinach Walnut Dip</string>
+    <string name="example_score">Health Score: 9.0</string>
+    <string name="label_extend_ingredient">Extend Ingredients</string>
+    <string name="recipe_detail">Recipe Details</string>
 </resources>

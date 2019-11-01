@@ -1,8 +1,11 @@
 package com.medialink.beginsubmission1.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
-public class ProductMatchesItem{
+public class ProductMatchesItem implements Parcelable {
 
 	@SerializedName("score")
 	private double score;
@@ -118,4 +121,49 @@ public class ProductMatchesItem{
 			",ratingCount = '" + ratingCount + '\'' + 
 			"}";
 		}
+
+	@Override
+	public int describeContents() {
+		return 0;
+	}
+
+	@Override
+	public void writeToParcel(Parcel dest, int flags) {
+		dest.writeDouble(this.score);
+		dest.writeString(this.price);
+		dest.writeString(this.imageUrl);
+		dest.writeDouble(this.averageRating);
+		dest.writeString(this.link);
+		dest.writeString(this.description);
+		dest.writeInt(this.id);
+		dest.writeString(this.title);
+		dest.writeDouble(this.ratingCount);
+	}
+
+	public ProductMatchesItem() {
+	}
+
+	protected ProductMatchesItem(Parcel in) {
+		this.score = in.readDouble();
+		this.price = in.readString();
+		this.imageUrl = in.readString();
+		this.averageRating = in.readDouble();
+		this.link = in.readString();
+		this.description = in.readString();
+		this.id = in.readInt();
+		this.title = in.readString();
+		this.ratingCount = in.readDouble();
+	}
+
+	public static final Parcelable.Creator<ProductMatchesItem> CREATOR = new Parcelable.Creator<ProductMatchesItem>() {
+		@Override
+		public ProductMatchesItem createFromParcel(Parcel source) {
+			return new ProductMatchesItem(source);
+		}
+
+		@Override
+		public ProductMatchesItem[] newArray(int size) {
+			return new ProductMatchesItem[size];
+		}
+	};
 }
