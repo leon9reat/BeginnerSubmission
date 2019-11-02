@@ -1,7 +1,6 @@
 package com.medialink.beginsubmission1.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +20,9 @@ import java.util.List;
 public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
     private static final String TAG = "IngredientAdapter";
 
-    private List<ExtendedIngredientsItem> listItem = new ArrayList<>();
-    private IngredientCallback callback;
-    private Context context;
+    private final List<ExtendedIngredientsItem> listItem = new ArrayList<>();
+    private final IngredientCallback callback;
+    private final Context context;
 
     public IngredientAdapter(Context context, IngredientCallback callback) {
         this.callback = callback;
@@ -69,8 +68,8 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgIngredient;
-        TextView tvName;
+        final ImageView imgIngredient;
+        final TextView tvName;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

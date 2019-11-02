@@ -5,4 +5,19 @@
     <string name="example_score">Health Score: 9.0</string>
     <string name="label_extend_ingredient">Extend Ingredients</string>
     <string name="recipe_detail">Recipe Details</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="label_account_info">Account Info</string>
+    <string name="nama">Bambang Ariyanto</string>
+    <string name="label_jabatan">developer</string>
+    <string name="label_hp">Mobile</string>
+    <string name="no_hp">+62-81345019699</string>
+    <string name="label_email">Email</string>
+    <string name="email">cyber.hecker@gmail.com</string>
+    <string name="label_alamat">Address</string>
+    <string name="alamat">Pontianak - Kalimantan Barat</string>
+    <string name="label_tgl_lahir">D.O.B</string>
+    <string name="tgl_lahir">06-02-1982</string>
+    <string name="label_back_home">Back to Home</string>
+    <string name="description_photo_profile">Photo Profile</string>
+    <string name="powered_by">Powered by: https://spoonacular.com/food-api</string>
 </resources>

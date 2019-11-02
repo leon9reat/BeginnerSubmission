@@ -20,9 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.MyViewHolder> {
-    private List<RecipesItem> listRecipe = new ArrayList<>();
-    private RecipeCallback callback;
-    private Context context;
+    private final List<RecipesItem> listRecipe = new ArrayList<>();
+    private final RecipeCallback callback;
+    private final Context context;
 
     public RecipeAdapter(Context context, RecipeCallback callback) {
         this.context = context;
@@ -75,8 +75,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvHealthScore, tvInstruction;
-        ImageView imgRecipe;
+        final TextView tvTitle;
+        final TextView tvHealthScore;
+        final TextView tvInstruction;
+        final ImageView imgRecipe;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);

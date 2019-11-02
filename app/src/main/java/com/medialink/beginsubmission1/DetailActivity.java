@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
@@ -18,16 +17,12 @@ import com.medialink.beginsubmission1.adapter.IngredientAdapter;
 import com.medialink.beginsubmission1.model.ExtendedIngredientsItem;
 import com.medialink.beginsubmission1.model.RecipesItem;
 
-import java.security.PrivateKey;
-import java.util.ArrayList;
-
 public class DetailActivity extends AppCompatActivity
 implements IngredientAdapter.IngredientCallback{
     private static final String TAG = "DetailActivity";
     private RecipesItem item;
     private TextView tvTitle, tvInstruction;
     private ImageView imgRecipe;
-    private RecyclerView rvIngredient;
     private IngredientAdapter mAdapter;
 
     @Override
@@ -73,7 +68,7 @@ implements IngredientAdapter.IngredientCallback{
         tvInstruction = findViewById(R.id.tv_instruction_detail);
         imgRecipe = findViewById(R.id.img_recipe_detail);
         mAdapter = new IngredientAdapter(this, this);
-        rvIngredient = findViewById(R.id.rv_detail);
+        RecyclerView rvIngredient = findViewById(R.id.rv_detail);
         rvIngredient.setAdapter(mAdapter);
     }
 

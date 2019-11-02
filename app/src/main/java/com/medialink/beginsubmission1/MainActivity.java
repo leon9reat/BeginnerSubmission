@@ -2,7 +2,9 @@ package com.medialink.beginsubmission1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,7 +19,6 @@ import com.medialink.beginsubmission1.network.ApiInterface;
 import com.medialink.beginsubmission1.network.RetrofitClient;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +27,6 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity
         implements RecipeAdapter.RecipeCallback {
     private static final String TAG = "MainActivity";
-    private RecyclerView rvMain;
     private RecipeAdapter mAdapter;
     private ArrayList<RecipesItem> listData = new ArrayList<>();
 
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         mAdapter = new RecipeAdapter(this, this);
 
-        rvMain = findViewById(R.id.rv_main);
+        RecyclerView rvMain = findViewById(R.id.rv_main);
         rvMain.setHasFixedSize(true);
         rvMain.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rvMain.setAdapter(mAdapter);
@@ -48,6 +48,23 @@ public class MainActivity extends AppCompatActivity
             listData = savedInstanceState.getParcelableArrayList("DATA");
             mAdapter.setData(listData);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.profile_menu_main) {
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
